@@ -16,4 +16,13 @@ export class TaskService {
   getTasks() {
     return this.http.get('/server/api/v1/todolist');
   }
+
+  getTask(id: number) {
+    return this.http.get('/server/api/v1/todolist/' + id);
+  }
+
+  createTask(task){
+    let body = JSON.stringify(task);
+    return this.http.post('/server/api/v1/todolist', body, httpOptions);
+  }
 }

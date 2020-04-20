@@ -13,29 +13,33 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import core.api.models.Task;
-import core.api.repositories.TaskRepository;
+import core.api.services.ListTasksService;
+import core.api.services.UpsertTasksService;
 
 @RestController
 @RequestMapping("/api/v1/todolist")
 public class TaskController {
 	
+	
 	@Autowired
-	private TaskRepository taskRepository;
+	private ListTasksService listTasksService;
+	@Autowired 
+	private UpsertTasksService upsertTasksService;
 	
 	@GetMapping
-	public List<Task> List() {
-		return taskRepository.findAll();
+	public List<Task> getTasksList() {
+		return listTasksService.getTasksList();
 	}
 	
-	@PostMapping
+	@PostMapping("/create")
 	@ResponseStatus(HttpStatus.OK)
-	public void create(@RequestBody Task task) {
-		taskRepository.save(task);
+	public void createTask(@RequestBody Task task) {
+		upsertTasksService.createTask(task);
 	}
 	
 	@GetMapping("{id}")
-	public Task get(@PathVariable("id") long id) {
-		return taskRepository.getOne(id);
+	public Task getOneTask(@PathVariable("id") long id) {
+		return listTasksService.getOneTask(id);
 	}
 	
 }

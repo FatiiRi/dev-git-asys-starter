@@ -20,6 +20,7 @@ public class Task {
 	private String description; 
 	private Date createdOn;
 	private Boolean isDone;
+	private String userLogin;
 
 	public Long getTaskId() {
 		return taskId;
@@ -50,6 +51,12 @@ public class Task {
 	}
 	public void setIsDone(Boolean isDone) {
 		this.isDone = isDone;
+	}
+	public String getUserLogin() {
+		return userLogin;
+	}
+	public void setUserLogin(String userLogin) {
+		this.userLogin = userLogin;
 	}
 	
 	

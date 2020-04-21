@@ -26,6 +26,17 @@ public class Task {
 	public Task() {
 	}
 
+	
+	public Task(Long taskId, String taskName, String description, Date createdOn, Boolean isDone, String userLogin) {
+		this.taskId = taskId;
+		this.taskName = taskName;
+		this.description = description;
+		this.createdOn = createdOn;
+		this.isDone = isDone;
+		this.userLogin = userLogin;
+	}
+
+
 	public Task(String taskName, String description, Date createdOn, Boolean isDone, String userLogin) {
 		this.taskName = taskName;
 		this.description = description;

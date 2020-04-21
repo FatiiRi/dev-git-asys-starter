@@ -10,15 +10,17 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.postgresql:postgresql'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.2.6.RELEASE'
+	implementation 'org.postgresql:postgresql:42.2.12.jre7'
+	implementation 'org.springframework.boot:spring-boot-starter-web:2.2.6.RELEASE'
 	implementation 'javax.inject:javax.inject:1'
 	implementation 'org.jwall:stream-api:0.9.10'
+	implementation 'org.mockito:mockito-all:1.9.5'
+	
 	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.2.0'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test:2.2.6.RELEASE'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.2.0'
-    testCompile 'org.springframework.boot:spring-boot-starter-test'
+    testCompile 'org.springframework.boot:spring-boot-starter-test:2.2.6.RELEASE'
   	testCompile 'org.junit.jupiter:junit-jupiter-engine:5.2.0'
 }
 

@@ -22,6 +22,15 @@ public class Task {
 	private Boolean isDone;
 	private String userLogin;
 
+	public Task(String taskName, String description, Date createdOn, Boolean isDone, String userLogin) {
+		super();
+		this.taskName = taskName;
+		this.description = description;
+		this.createdOn = createdOn;
+		this.isDone = isDone;
+		this.userLogin = userLogin;
+	}
+	
 	public Long getTaskId() {
 		return taskId;
 	}
@@ -58,7 +67,7 @@ public class Task {
 	public void setUserLogin(String userLogin) {
 		this.userLogin = userLogin;
 	}
-	
+
 	
 	
 }

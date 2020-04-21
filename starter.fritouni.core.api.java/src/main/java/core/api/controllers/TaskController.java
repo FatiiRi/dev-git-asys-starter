@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import core.api.dtos.TaskDto;
 import core.api.models.Task;
 import core.api.services.ListTasksService;
 import core.api.services.UpsertTasksService;
@@ -33,12 +34,13 @@ public class TaskController {
 	
 	@PostMapping("/create")
 	@ResponseStatus(HttpStatus.OK)
-	public void createTask(@RequestBody Task task) {
-		upsertTasksService.createTask(task);
+	public void createTask(@RequestBody TaskDto taskDto) {
+		upsertTasksService.createTask(taskDto);
 	}
 	
 	@GetMapping("{id}")
 	public Task getOneTask(@PathVariable("id") long id) {
+		
 		return listTasksService.getOneTask(id);
 	}
 	

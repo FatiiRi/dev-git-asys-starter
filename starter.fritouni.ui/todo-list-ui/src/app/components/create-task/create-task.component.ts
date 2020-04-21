@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TaskService } from '../../services/task.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
+import { Task } from 'src/app/models/task.model';
 
 @Component({
   selector: 'app-create-task',
@@ -16,6 +17,7 @@ export class CreateTaskComponent implements OnInit {
   ];
   taskForm: FormGroup;
   validMessage: string = "";
+  createdTask: Task;
 
   constructor(private taskService: TaskService) { }
 
@@ -32,18 +34,20 @@ export class CreateTaskComponent implements OnInit {
 
   submitTask(){
     if(this.taskForm.valid) {
-      this.validMessage = "Your task has been added.";
-      this.taskService.createTask(this.taskForm.value).subscribe(
+      this.createdTask = this.taskForm.value;
+      this.validMessage = "Your task has been submitted!";
+      this.taskService.createTask(this.createdTask).subscribe(
         data => {
           this.taskForm.reset();
           return true;
         },
         error => {
+          this.validMessage = "An Error has occurred!"
           return Observable.throw(error);
         }
       );
     } else {
-      this.validMessage = "Please fill out the form before submitting";
+      this.validMessage = "Please fill out the form before submitting!";
     }
 
   }

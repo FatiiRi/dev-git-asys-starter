@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import core.api.models.Task;
 import core.api.repositories.TaskRepository;
@@ -19,7 +18,7 @@ public class ListTasksService {
 		return taskRepository.findAll();
 	}
 	
-	public Task getOneTask(@PathVariable("id") long id) {
+	public Task getOneTask(long id) {
 		return taskRepository.getOne(id);
 	}
 }

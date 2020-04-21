@@ -22,8 +22,11 @@ public class Task {
 	private Boolean isDone;
 	private String userLogin;
 
+	
+	public Task() {
+	}
+
 	public Task(String taskName, String description, Date createdOn, Boolean isDone, String userLogin) {
-		super();
 		this.taskName = taskName;
 		this.description = description;
 		this.createdOn = createdOn;

@@ -17,7 +17,10 @@ export class TodolistComponent implements OnInit {
 
   getTasks() {
     this.taskService.getTasks().subscribe(
-      data => {this.tasks = data},
+      data => {
+        console.log(data);
+        this.tasks = data;
+      },
       err => console.error(err),
       () => console.log('tasks loaded')
     );

@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import core.api.dtos.TaskDto;
-import core.api.models.Task;
 import core.api.services.ListTasksService;
 import core.api.services.UpsertTasksService;
 
@@ -28,7 +27,7 @@ public class TaskController {
 	private UpsertTasksService upsertTasksService;
 	
 	@GetMapping
-	public List<Task> getTasksList() {
+	public List<TaskDto> getTasksList() {
 		return listTasksService.getTasksList();
 	}
 	
@@ -39,7 +38,7 @@ public class TaskController {
 	}
 	
 	@GetMapping("{id}")
-	public Task getOneTask(@PathVariable("id") long id) {
+	public TaskDto getOneTask(@PathVariable("id") long id) {
 		
 		return listTasksService.getOneTask(id);
 	}

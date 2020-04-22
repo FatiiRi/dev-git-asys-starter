@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from '../../services/task.service';
 import { faTrashAlt, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
-import { Observable } from 'rxjs';
+import { DatePipe } from '@angular/common'
 
 @Component({
   selector: 'app-todolist',

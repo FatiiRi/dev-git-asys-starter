@@ -15,7 +15,7 @@
                 {{task.description}}
             </td>
             <td>
-                {{task.createdOn}}
+                {{task.createdOn | date:'shortDate' }}
             </td>
             <td>
                 <input type="checkbox" [checked]="task.isDone" readonly>

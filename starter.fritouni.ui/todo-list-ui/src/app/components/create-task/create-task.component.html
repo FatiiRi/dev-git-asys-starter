@@ -21,7 +21,8 @@
         </div>
         <div class="form-group">
           <label>Created On</label>
-          <input type="date" class="form-control" formControlName="createdOn"/>
+          <input *ngIf="id === undefined" type="date" class="form-control" formControlName="createdOn"/>
+          <input *ngIf="id !== undefined" type="text" class="form-control" formControlName="createdOn" disabled/>
         </div>
         <div class="form-group">
           <label>Is Done</label>

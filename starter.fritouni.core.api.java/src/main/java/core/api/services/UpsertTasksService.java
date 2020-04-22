@@ -14,19 +14,9 @@ public class UpsertTasksService implements IUpsertTasksService {
 	@Inject
 	private TaskRepository taskRepository;	
 
-	public void createTask(TaskDto taskDto) {
+	public void upsertTask(TaskDto taskDto) {
 		Task task = new Task(
-				taskDto.taskName,
-				taskDto.description,
-				taskDto.createdOn,
-				taskDto.isDone,
-				taskDto.userLogin
-				);
-		taskRepository.save(task);
-	}
-
-	public void updateTask(TaskDto taskDto) {
-		Task task = new Task(
+				taskDto.taskId,
 				taskDto.taskName,
 				taskDto.description,
 				taskDto.createdOn,

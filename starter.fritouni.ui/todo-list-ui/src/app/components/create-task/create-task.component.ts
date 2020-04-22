@@ -3,6 +3,7 @@ import { TaskService } from '../../services/task.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Task } from 'src/app/models/task.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-create-task',
@@ -10,45 +11,57 @@ import { Task } from 'src/app/models/task.model';
   styleUrls: ['./create-task.component.scss']
 })
 export class CreateTaskComponent implements OnInit {
-  priorities: string[] = [
-    'Urgent',
-    'Important',
-    'Not Important'
-  ];
   taskForm: FormGroup;
   validMessage: string = "";
-  createdTask: Task;
+  createdTask;
+  id;
 
-  constructor(private taskService: TaskService) { }
+  constructor(private taskService: TaskService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.id = this.route.snapshot.params.id;
+    if(this.id !== undefined && this.id !== null && this.id !== ''){
+      this.getOneTask(this.id);
+    }
+
     this.taskForm = new FormGroup({
+      taskId: new FormControl(),
       taskName: new FormControl('',Validators.required),
       description: new FormControl('',Validators.required),
       userLogin: new FormControl('',Validators.required),
       createdOn: new FormControl(),
       isDone: new FormControl(),
-      //priority: new FormControl(),
     })
   }
 
   submitTask(){
     if(this.taskForm.valid) {
       this.createdTask = this.taskForm.value;
-      this.validMessage = "Your task has been submitted!";
-      this.taskService.createTask(this.createdTask).subscribe(
-        data => {
-          this.taskForm.reset();
-          return true;
-        },
-        error => {
-          this.validMessage = "An Error has occurred!"
-          return Observable.throw(error);
-        }
-      );
+        this.taskService.upsertTask(this.createdTask).subscribe(
+          data => {
+            this.validMessage = "Your task has been submitted !";
+            if(this.id === undefined || this.id === null){
+              this.taskForm.reset();
+            }
+            return true;
+          },
+          error => {
+            this.validMessage = "An Error has occurred!"
+            return Observable.throw(error);
+          }
+        );     
     } else {
       this.validMessage = "Please fill out the form before submitting!";
     }
+  }
+  getOneTask(id:number){
+    this.taskService.getTask(id).subscribe(
+      data => {
+        this.taskForm.setValue(data);
+      },
+      err => console.log(err),
+      () => console.log('task loaded')
+    );
 
   }
 

@@ -10,6 +10,7 @@ import { CreateTaskComponent } from './components/create-task/create-task.compon
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ViewTaskComponent } from './components/view-task/view-task.component';
 import { RouterModule } from '@angular/router'; 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { RouterModule } from '@angular/router';
     HttpClientModule,
     ReactiveFormsModule,
     NoopAnimationsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    FontAwesomeModule
   ],
   providers: [TaskService],
   bootstrap: [AppComponent]

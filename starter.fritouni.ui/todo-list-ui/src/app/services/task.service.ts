@@ -22,8 +22,12 @@ export class TaskService {
     return this.http.get('/server/api/v1/todolist/' + id);
   }
 
-  createTask(task:Task){
+  deleteTask(id: number){
+    return this.http.delete('/server/api/v1/todolist/' +id);
+  }
+
+  upsertTask(task:Task){
     let body = JSON.stringify(task);
-    return this.http.post('/server/api/v1/todolist/create', body, httpOptions);
+    return this.http.put('/server/api/v1/todolist', body, httpOptions);
   }
 }

@@ -4,6 +4,8 @@
             <th>Task Name</th>
             <th>Description </th>
             <th>Created On</th>
+            <th>Done</th>
+            <th>Actions</th>
         </tr>
         <tr *ngFor="let task of tasks">
             <td>
@@ -15,9 +17,21 @@
             <td>
                 {{task.createdOn}}
             </td>
+            <td>
+                <input type="checkbox" [checked]="task.isDone" readonly>
+            </td>
+            <td>
+                <button (click)="onDeleteClick(task.taskId)"><fa-icon [icon]="faTrash"></fa-icon></button>
+                <button [routerLink]="['/newtask', task.taskId]">
+                        <fa-icon [icon]="faPencil"></fa-icon>
+                </button>
+            </td>
         </tr>
     </table>
     <div class="row">
         <a class="btn btn=primary" routerLink="/newtask">Create new task</a>
+    </div>
+    <div *ngIf="validMessage != ''">
+        <h3 class="has-info">{{validMessage}}</h3>
     </div>
 </div>

@@ -19,9 +19,9 @@
         <label>Created on</label>
         <div class="form-control">{{task.createdOn}}</div>
       </div>
-      <div class="form-group">
-        <label>is Done</label>
-        <div class="form-control">{{task.isDone}}</div>
+      <div class="form-group form-check">
+        <label>Is Done</label>
+        <input type="checkbox" class="form-control" [checked]="task.isDone" disabled="true">
       </div>
     </div>
   </div>

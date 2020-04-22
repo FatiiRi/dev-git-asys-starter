@@ -20,6 +20,10 @@ export const routes: Routes = [
     {
       path:'newtask',
       component: CreateTaskComponent
+    },
+    {
+      path:'newtask/:id',
+      component: CreateTaskComponent
     }
 ];
 

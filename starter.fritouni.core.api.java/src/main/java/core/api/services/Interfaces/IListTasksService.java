@@ -1,4 +1,4 @@
-package core.api.services;
+package core.api.services.Interfaces;
 
 import java.util.List;
 

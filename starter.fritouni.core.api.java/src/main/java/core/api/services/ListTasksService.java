@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import core.api.dtos.TaskDto;
 import core.api.models.Task;
 import core.api.repositories.TaskRepository;
+import core.api.services.Interfaces.IListTasksService;
 
 @Service
 public class ListTasksService implements IListTasksService {

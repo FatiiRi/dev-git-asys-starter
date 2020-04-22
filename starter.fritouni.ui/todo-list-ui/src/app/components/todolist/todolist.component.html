@@ -7,7 +7,7 @@
         </tr>
         <tr *ngFor="let task of tasks">
             <td>
-                {{task.taskName}}
+                <a [routerLink]="['/todolist/view/', task.taskId]">{{task.taskName}}</a>
             </td>
             <td>
                 {{task.description}}
@@ -17,4 +17,7 @@
             </td>
         </tr>
     </table>
+    <div class="row">
+        <a class="btn btn=primary" routerLink="/newtask">Create new task</a>
+    </div>
 </div>

@@ -2,18 +2,23 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { TodolistComponent } from './components/todolist/todolist.component';
 import { CreateTaskComponent } from './components/create-task/create-task.component';
+import { ViewTaskComponent } from './components/view-task/view-task.component';
 
-const routes: Routes = [
+export const routes: Routes = [
     {
-    path:'',
-    component: TodolistComponent
-    },
-    {
-      path:'todoList',
+      path:'',
       component: TodolistComponent
     },
     {
-      path:'newTask',
+      path:'todolist/view/:id',
+      component: ViewTaskComponent
+    },
+    {
+      path:'todolist',
+      component: TodolistComponent
+    },
+    {
+      path:'newtask',
       component: CreateTaskComponent
     }
 ];

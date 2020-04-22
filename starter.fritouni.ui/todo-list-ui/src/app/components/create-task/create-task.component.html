@@ -1,38 +1,33 @@
 <div class="container">
-    <form [formGroup]="taskForm" (ngSubmit)="submitTask()" novalidate>
-      <div *ngIf="validMessage != ''">
-        <h3 class="has-info">{{validMessage}}</h3>
-      </div>
-      <div class="form-group">
-        <label>Name</label>
-        <input type="text" class="form-control" formControlName="taskName" required autofocus/>
-      </div>
-      <div class="form-group">
-        <label>Description</label>
-        <input type="text" class="form-control" formControlName="description" required/>
-      </div>
-      <div class="form-group">
-        <label>User Name</label>
-        <input type="text" class="form-control" formControlName="userLogin" required/>
-      </div>
-      <div class="form-group">
-        <label>Created On</label>
-        <input type="date" class="form-control" formControlName="createdOn"/>
-      </div>
-      <div class="form-group">
-        <label>Is Done</label>
-        <input type="checkbox" class="form-control" formControlName="isDone"/>
-      </div>
-      <!-- <div class="form-group">
-        <label>Priority</label>
-        <select class="form-control" formControlName="priorities" required>
-          <option value="">Please select a priority</option>
-          <option *ngFor="let p of priorities"
-                  [value]="p">
-                  {{p}}
-          </option>
-        </select>
-      </div>  -->
-      <button type="submit" class="btn btn-primary" >Submit</button>
-    </form>
+    <div class="row">
+      <a class="btn btn=primary" routerLink="/todolist">Back to List</a>
+    </div>
+    <div>
+      <form [formGroup]="taskForm" (ngSubmit)="submitTask()" novalidate>
+        <div *ngIf="validMessage != ''">
+          <h3 class="has-info">{{validMessage}}</h3>
+        </div>
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" class="form-control" formControlName="taskName" required autofocus/>
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <input type="text" class="form-control" formControlName="description" required/>
+        </div>
+        <div class="form-group">
+          <label>User Name</label>
+          <input type="text" class="form-control" formControlName="userLogin" required/>
+        </div>
+        <div class="form-group">
+          <label>Created On</label>
+          <input type="date" class="form-control" formControlName="createdOn"/>
+        </div>
+        <div class="form-group">
+          <label>Is Done</label>
+          <input type="checkbox" class="form-control" formControlName="isDone"/>
+        </div>
+        <button type="submit" class="btn btn-primary" >Submit</button>
+      </form>
+    </div>   
   </div>

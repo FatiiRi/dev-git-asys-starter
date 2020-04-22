@@ -13,6 +13,7 @@ export class TodolistComponent implements OnInit {
   faTrash = faTrashAlt;
   faPencil = faPencilAlt;
   validMessage: string = "";
+  alert:string = "alert alert-info";
 
   constructor(private taskService : TaskService) { }
 
@@ -34,10 +35,12 @@ export class TodolistComponent implements OnInit {
   onDeleteClick(id:number) {
     this.taskService.deleteTask(id).subscribe(
       data => {
+        this.alert = "alert alert-success";
         this.validMessage = "Your task has been deleted!";
         this.getTasks();
       },
       error => {
+        this.alert = "alert alert-error"
         this.validMessage = "An Error has occurred!"
       },
       () => console.log('task deleted' + id)

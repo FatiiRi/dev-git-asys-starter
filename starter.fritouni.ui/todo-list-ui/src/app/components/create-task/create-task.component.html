@@ -1,19 +1,21 @@
 <div class="container">
     <div class="row">
-      <a class="btn btn=primary" routerLink="/todolist">Back to List</a>
+      <a class="btn btn-primary" routerLink="/todolist">Back to List</a>
     </div>
     <div>
       <form [formGroup]="taskForm" (ngSubmit)="submitTask()" novalidate>
         <div *ngIf="validMessage != ''">
-          <h3 class="has-info">{{validMessage}}</h3>
+          <div class="{{alert}}">
+            {{validMessage}}
+          </div>
         </div>
         <div class="form-group">
           <label>Name</label>
-          <input type="text" class="form-control" formControlName="taskName" required autofocus/>
+          <input type="textarea" class="form-control" formControlName="taskName" required autofocus/>
         </div>
         <div class="form-group">
           <label>Description</label>
-          <input type="text" class="form-control" formControlName="description" required/>
+          <textarea class="form-control" formControlName="description" required></textarea>
         </div>
         <div class="form-group">
           <label>User Name</label>
@@ -22,9 +24,9 @@
         <div class="form-group">
           <label>Created On</label>
           <input *ngIf="id === undefined" type="date" class="form-control" formControlName="createdOn"/>
-          <input *ngIf="id !== undefined" type="text" class="form-control" formControlName="createdOn" disabled/>
+          <input *ngIf="id !== undefined" type="text" class="form-control" formControlName="createdOn" readonly/>
         </div>
-        <div class="form-group">
+        <div *ngIf="id !== undefined" class="form-group">
           <label>Is Done</label>
           <input type="checkbox" class="form-control" formControlName="isDone"/>
         </div>

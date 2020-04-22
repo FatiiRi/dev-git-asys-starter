@@ -15,6 +15,7 @@ export class CreateTaskComponent implements OnInit {
   validMessage: string = "";
   createdTask;
   id;
+  alert:string = "alert alert-info";
 
   constructor(private taskService: TaskService, private route: ActivatedRoute) { }
 
@@ -40,6 +41,7 @@ export class CreateTaskComponent implements OnInit {
         this.taskService.upsertTask(this.createdTask).subscribe(
           data => {
             this.validMessage = "Your task has been submitted !";
+            this.alert = "alert alert-success";
             if(this.id === undefined || this.id === null){
               this.taskForm.reset();
             }
@@ -47,10 +49,12 @@ export class CreateTaskComponent implements OnInit {
           },
           error => {
             this.validMessage = "An Error has occurred!"
+            this.alert = "alert alert-error"
             return Observable.throw(error);
           }
         );     
     } else {
+      this.alert = "alert alert-warning"
       this.validMessage = "Please fill out the form before submitting!";
     }
   }

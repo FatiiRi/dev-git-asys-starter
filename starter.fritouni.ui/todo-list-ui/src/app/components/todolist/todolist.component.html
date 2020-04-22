@@ -1,4 +1,7 @@
 <div class="container">
+    <div class="row">
+        <a class="btn btn-primary" routerLink="/newtask">Create new task</a>
+    </div>
     <table class="table table-bordered table-inverse">
         <tr>
             <th>Task Name</th>
@@ -28,10 +31,9 @@
             </td>
         </tr>
     </table>
-    <div class="row">
-        <a class="btn btn=primary" routerLink="/newtask">Create new task</a>
-    </div>
     <div *ngIf="validMessage != ''">
-        <h3 class="has-info">{{validMessage}}</h3>
-    </div>
+        <div class="{{alert}}">
+          {{validMessage}}
+        </div>
+      </div>
 </div>

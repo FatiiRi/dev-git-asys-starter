@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <a class="btn btn-primary" routerLink="/newtask">Create new task</a>
+        <a class="btn btn-primary" routerLink="/newtask" id="createTaskBtn">Create new task</a>
     </div>
     <table class="table table-bordered table-inverse">
         <tr>
@@ -12,7 +12,7 @@
         </tr>
         <tr *ngFor="let task of tasks">
             <td>
-                <a [routerLink]="['/todolist/view/', task.taskId]">{{task.taskName}}</a>
+                <a [routerLink]="['/todolist/view/', task.taskId]" id="viewTaskLink">{{task.taskName}}</a>
             </td>
             <td>
                 {{task.description}}
@@ -24,8 +24,10 @@
                 <input type="checkbox" [checked]="task.isDone" readonly>
             </td>
             <td>
-                <button (click)="onDeleteClick(task.taskId)"><fa-icon [icon]="faTrash"></fa-icon></button>
-                <button [routerLink]="['/newtask', task.taskId]">
+                <button (click)="onDeleteClick(task.taskId)" id="deleteTaskBtn">
+                    <fa-icon [icon]="faTrash"></fa-icon>
+                </button>
+                <button [routerLink]="['/newtask', task.taskId]" id="updateTaskBtn">
                         <fa-icon [icon]="faPencil"></fa-icon>
                 </button>
             </td>

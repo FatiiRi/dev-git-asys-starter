@@ -1,36 +1,36 @@
 <div class="container">
     <div class="row">
-      <a class="btn btn-primary" routerLink="/todolist">Back to List</a>
+      <a class="btn btn-primary" routerLink="/todolist" id="backToListBtn">Back to List</a>
     </div>
     <div>
       <form [formGroup]="taskForm" (ngSubmit)="submitTask()" novalidate>
         <div *ngIf="validMessage != ''">
-          <div class="{{alert}}">
+          <div class="{{alert}}" id="validationMsg">
             {{validMessage}}
           </div>
         </div>
         <div class="form-group">
           <label>Name</label>
-          <input type="textarea" class="form-control" formControlName="taskName" required autofocus/>
+          <input type="textarea" class="form-control" formControlName="taskName" name="taskName" required autofocus/>
         </div>
         <div class="form-group">
           <label>Description</label>
-          <textarea class="form-control" formControlName="description" required></textarea>
+          <textarea class="form-control" formControlName="description" name="description" required></textarea>
         </div>
         <div class="form-group">
           <label>User Name</label>
-          <input type="text" class="form-control" formControlName="userLogin" required/>
+          <input type="text" class="form-control" formControlName="userLogin" name="userLogin" required/>
         </div>
         <div class="form-group">
           <label>Created On</label>
-          <input *ngIf="id === undefined" type="date" class="form-control" formControlName="createdOn"/>
+          <input *ngIf="id === undefined" type="date" class="form-control" formControlName="createdOn" name="createdOn"/>
           <input *ngIf="id !== undefined" type="text" class="form-control" formControlName="createdOn" readonly/>
         </div>
         <div *ngIf="id !== undefined" class="form-group">
           <label>Is Done</label>
-          <input type="checkbox" class="form-control" formControlName="isDone"/>
+          <input type="checkbox" class="form-control" formControlName="isDone" name="isDone"/>
         </div>
-        <button type="submit" class="btn btn-primary" >Submit</button>
+        <button type="submit" class="btn btn-primary" id="submitBtn" >Submit</button>
       </form>
     </div>   
   </div>

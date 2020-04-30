@@ -27,6 +27,13 @@ public class CalculatorTests {
 	public void multipleTest() {
 		long multipileResult = Calculator.multiple(11, 2);
 		assertEquals(22, multipileResult);
+		
+	}
+	
+	@Test
+	public void devideTest() throws Exception {
+		long devideResult = Calculator.devide(10, 2);
+		assertEquals(5, devideResult);
 	}
 
 }
